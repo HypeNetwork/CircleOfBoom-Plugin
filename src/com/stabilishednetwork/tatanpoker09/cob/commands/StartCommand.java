@@ -16,16 +16,16 @@ public class StartCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
-		if(Match.getState().equals(MatchState.PREMATCH)){
+		if(Match.getMatch().getState().equals(MatchState.PREMATCH)){
 			for(Player player : Bukkit.getOnlinePlayers()){
-				Match.getSurvivors().add(player);
+				Match.getMatch().getSurvivors().add(player);
 			}
-			if(Match.getSurvivors().size()<1){
+			if(Match.getMatch().getSurvivors().size()<1){
 				sender.sendMessage(ChatColor.RED+"You need at least 2 players to start the game.");
-				sender.sendMessage(ChatColor.RED+"You currently have: "+Match.getSurvivors().size()+" survivors");
+				sender.sendMessage(ChatColor.RED+"You currently have: "+Match.getMatch().getSurvivors().size()+" survivors");
 			} else {
-				Match.loadLocations();
-				Match.teleportPlayers();
+				Match.getMatch().loadLocations();
+				Match.getMatch().teleportPlayers();
 				Match.startMatchCountdown();
 				return true;
 			}
