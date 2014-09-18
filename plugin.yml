@@ -1,0 +1,7 @@
+main: com.stabilishednetwork.tatanpoker09.cob.Main
+name: COB
+description: Plugin for an explosive gamemode
+author: tatanpoker09
+version: 0.5
+commands:
+  start:
