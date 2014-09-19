@@ -5,11 +5,9 @@ import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
-
-import com.stabilishednetwork.tatanpoker09.cob.Match;
 
 public class BlockUtils {
+	private static int radious;
 	public static Location getLastBlockInCircle(Location center){
 		//Location center = Match.getMatch().getCenter();
 		while(true){
@@ -32,9 +30,9 @@ public class BlockUtils {
 		return center;
 	}
 	public static double getRadious(){
-		return getLastBlockInCircle(Match.getMatch().getCenter()).getX()-2;
+		return radious;
 	}
-	public static Block getRandomBlockInCircle(){
+	public static Location getRandomLocationInCircle(){
 		Random rndGen = new Random();
 		int radious = (int)getRadious();
 		int r = rndGen.nextInt(radious-2);
@@ -42,6 +40,9 @@ public class BlockUtils {
 		double z = Math.sqrt(Math.pow(r,2) - Math.pow(x,2));
 		if(rndGen.nextBoolean()) x *= -1;
 		if(rndGen.nextBoolean()) z *= -1;
-		return new Location(Bukkit.getWorlds().get(0), x, Bukkit.getWorlds().get(0).getHighestBlockYAt(x, (int)z), z).getBlock();
+		return new Location(Bukkit.getWorlds().get(0), x, Bukkit.getWorlds().get(0).getHighestBlockYAt(x, (int)z)+10, z);
+	}
+	public static void setRadious(int radious) {
+		BlockUtils.radious = radious;
 	}
 }

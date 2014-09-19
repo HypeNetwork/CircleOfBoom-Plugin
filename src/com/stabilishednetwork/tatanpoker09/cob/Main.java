@@ -9,8 +9,16 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.stabilishednetwork.tatanpoker09.cob.commands.StartCommand;
+import com.stabilishednetwork.tatanpoker09.cob.listeners.BlockListener;
 import com.stabilishednetwork.tatanpoker09.cob.listeners.PlayerListener;
 import com.stabilishednetwork.tatanpoker09.cob.utils.ScoreboardUtils;
+
+/*TODO
+ * KNOWN BUGS:
+ * TNT SOMETIMES DISSAPEARS INSTEAD OF EXPLODING
+ * PLAYERS FOODBAR SHOULD BE ALWAYS AT MAX.
+ * 
+ */
 
 public class Main extends JavaPlugin{
 	private static final File mapsDirectory = new File("COBMaps/");
@@ -19,6 +27,7 @@ public class Main extends JavaPlugin{
 		Map.loadMaps();
 		PluginManager pm = Bukkit.getPluginManager();
 		pm.registerEvents(new PlayerListener(), this);
+		pm.registerEvents(new BlockListener(), this);
 		getCommand("start").setExecutor(new StartCommand());
 		loadMap(Map.getMaps().get(0));
 	}

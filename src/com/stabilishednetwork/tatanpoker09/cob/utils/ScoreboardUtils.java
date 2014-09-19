@@ -12,6 +12,7 @@ import org.bukkit.scoreboard.Scoreboard;
 import com.stabilishednetwork.tatanpoker09.cob.Main;
 
 public class ScoreboardUtils {
+	
 	@SuppressWarnings("deprecation")
 	public static void organizeScoreboard(List<String> scoreboardInfo, Scoreboard board){
 		Collections.reverse(scoreboardInfo);

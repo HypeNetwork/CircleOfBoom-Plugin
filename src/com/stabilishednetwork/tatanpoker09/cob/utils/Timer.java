@@ -18,6 +18,7 @@ public class Timer {
 				if(Timer.countdown!=0){
 					Bukkit.broadcastMessage(ChatColor.DARK_GREEN+"Empezando la partida en... "+ChatColor.GREEN+ChatColor.BOLD+Timer.countdown);
 					Timer.countdown--;
+					//Main.getCurrentWorld().playEffect(Match.getMatch().getCenter(), Effect.STEP_SOUND, 10);
 				} else {
 					Match.startMatch();
 					Bukkit.getScheduler().cancelTask(taskToCancel);
@@ -25,5 +26,4 @@ public class Timer {
 			}
 		}, 0L, 20L);
 	}
-
 }
